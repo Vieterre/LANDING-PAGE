@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123b4a">
+  <meta name="description" content="Vieterre.tech impulsa la transformación de las entidades públicas mediante soluciones digitales, asesoría especializada y formación de capacidades.">
+  <title>Vieterre.tech — Innovación, tecnología y conocimiento para transformar la gestión pública</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg: #071e29;
+      --bg-soft: #0d3040;
+      --surface: rgba(18, 59, 74, .72);
+      --surface-strong: #123b4a;
+      --line: rgba(230, 245, 243, .17);
+      --line-bright: rgba(85, 200, 77, .42);
+      --text: #f4f8fc;
+      --muted: #b1c8ce;
+      --accent: #55c84d;
+      --accent-blue: #146c94;
+      --accent-violet: #007f76;
+      --brand-teal: #007f76;
+      --brand-green: #55c84d;
+      --brand-blue: #146c94;
+      --brand-deep: #123b4a;
+      --brand-light: #e6f5f3;
+      --graphite: #263238;
+      --max: 1200px;
+      --radius: 24px;
+      --shadow: 0 24px 80px rgba(0,0,0,.34);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 100px; overflow-x: hidden; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--bg);
+      font-family: "DM Sans", sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -2;
+      background:
+        radial-gradient(650px circle at var(--mx, 78%) var(--my, 12%), rgba(0, 127, 118, .2), transparent 60%),
+        linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
+      background-size: auto, 64px 64px, 64px 64px;
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 99;
+      opacity: .035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    .shell { width: min(calc(100% - 40px), var(--max)); margin-inline: auto; }
+    .skip { position: fixed; left: 16px; top: -60px; z-index: 1000; padding: 10px 16px; background: var(--accent); color: #03100d; border-radius: 8px; font-weight: 700; }
+    .skip:focus { top: 16px; }
+    .site-header {
+      position: fixed;
+      top: 0;
+      inset-inline: 0;
+      z-index: 50;
+      transition: background .3s ease, border-color .3s ease, backdrop-filter .3s ease;
+      border-bottom: 1px solid transparent;
+    }
+    .site-header.scrolled { background: rgba(7, 30, 41, .88); border-color: var(--line); backdrop-filter: blur(18px); }
+    .nav { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; font-family: Manrope, sans-serif; font-weight: 750; letter-spacing: -.03em; font-size: 1.08rem; }
+    .brand-mark { width: 42px; aspect-ratio: 1; border: 1px solid rgba(230,245,243,.24); border-radius: 12px; display: grid; place-items: center; padding: 3px; overflow: hidden; background: white; box-shadow: 0 8px 22px rgba(0,127,118,.2); }
+    .brand-mark img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .brand-mark .brand-monogram { font: 800 1rem/1 Manrope, sans-serif; color: var(--brand-teal); }
+    .brand em { color: var(--accent); font-style: normal; }
+    .nav-links { display: flex; align-items: center; gap: 26px; font-size: .9rem; color: #b4c3d4; }
+    .nav-links a { position: relative; transition: color .2s; }
+    .nav-links a::after { content: ""; position: absolute; left: 0; right: 100%; bottom: -7px; height: 1px; background: var(--accent); transition: right .25s; }
+    .nav-links a:hover, .nav-links a:focus-visible { color: white; }
+    .nav-links a:hover::after, .nav-links a:focus-visible::after { right: 0; }
+    .nav-cta { border: 1px solid var(--line); padding: 10px 16px; border-radius: 999px; background: rgba(255,255,255,.035); }
+    .nav-links .nav-cta::after { display: none; }
+    .menu-btn { display: none; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 13px; background: var(--surface); color: white; cursor: pointer; }
+    .menu-btn span { display: block; width: 18px; height: 1px; background: currentColor; margin: 5px auto; transition: transform .2s, opacity .2s; }
+    main { position: relative; }
+    .hero { min-height: 830px; display: grid; align-items: center; padding: 150px 0 100px; position: relative; }
+    .hero::before { content: ""; position: absolute; width: 620px; height: 620px; border: 1px solid rgba(78,140,255,.11); border-radius: 50%; right: -240px; top: 100px; box-shadow: 0 0 120px rgba(78,140,255,.09), inset 0 0 120px rgba(78,140,255,.04); }
+    .hero-grid { display: grid; grid-template-columns: 1fr; align-items: center; }
+    .hero-copy { max-width: 960px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; color: var(--accent); }
+    .eyebrow::before { content: ""; width: 28px; height: 1px; background: currentColor; }
+    h1, h2, h3 { font-family: Manrope, sans-serif; margin: 0; letter-spacing: -.045em; }
+    h1 { margin-top: 26px; font-size: clamp(3.2rem, 6.6vw, 6.7rem); line-height: .98; max-width: 960px; }
+    h1 .outline { display: block; color: #f5faf9; -webkit-text-stroke: 0; font-size: .68em; line-height: 1.08; margin-top: 14px; max-width: 920px; }
+    h1 .outline strong { color: var(--brand-green); font-weight: 800; }
+    .hero-copy > p { max-width: 720px; margin: 28px 0 0; color: var(--muted); font-size: clamp(.96rem, 1.45vw, 1.08rem); line-height: 1.7; }
+    .actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 38px; }
+    .btn { min-height: 52px; padding: 0 21px; border-radius: 14px; display: inline-flex; justify-content: center; align-items: center; gap: 11px; font-weight: 600; border: 1px solid transparent; transition: transform .2s, box-shadow .2s, border-color .2s, background .2s; cursor: pointer; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--accent); color: #041612; box-shadow: 0 12px 34px rgba(77,232,194,.14); }
+    .btn-primary:hover { box-shadow: 0 15px 44px rgba(77,232,194,.24); }
+    .btn-secondary { background: rgba(255,255,255,.025); border-color: var(--line); color: var(--text); }
+    .btn-secondary:hover { border-color: rgba(255,255,255,.32); background: rgba(255,255,255,.05); }
+    .arrow { transition: transform .2s; }
+    .btn:hover .arrow, .project-link:hover .arrow { transform: translateX(4px); }
+    .system-card { position: relative; min-height: 490px; display: grid; place-items: center; perspective: 1000px; }
+    .system-card::before { content: ""; position: absolute; width: 340px; height: 340px; border-radius: 50%; background: rgba(78,140,255,.16); filter: blur(90px); }
+    .system-panel { width: min(100%, 480px); border-radius: 28px; padding: 22px; border: 1px solid rgba(170,201,231,.2); background: linear-gradient(145deg, rgba(16,35,61,.92), rgba(7,17,34,.86)); box-shadow: var(--shadow), inset 0 1px rgba(255,255,255,.06); transform: rotateY(-7deg) rotateX(3deg); transition: transform .4s ease; }
+    .system-panel:hover { transform: rotateY(-2deg) rotateX(1deg) translateY(-4px); }
+    .panel-top { display: flex; justify-content: flex-end; align-items: center; padding-bottom: 18px; color: #8da0b5; font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; }
+    .status { display: inline-flex; align-items: center; gap: 7px; color: var(--accent); }
+    .status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; box-shadow: 0 0 12px currentColor; animation: pulse 2.5s infinite; }
+    .signal-map { position: relative; height: 315px; border: 1px solid var(--line); border-radius: 20px; overflow: hidden; background: radial-gradient(circle at 50% 50%, rgba(78,140,255,.12), transparent 45%), rgba(2,9,20,.45); }
+    .signal-map svg { width: 100%; height: 100%; }
+    .orb { transform-origin: center; animation: orbit 9s linear infinite; }
+    .panel-foot { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding-top: 16px; }
+    .metric { padding: 11px 12px; border: 1px solid var(--line); border-radius: 13px; background: rgba(255,255,255,.02); }
+    .metric small { color: #778da6; display: block; font-size: .66rem; text-transform: uppercase; letter-spacing: .1em; }
+    .metric strong { font-family: Manrope; font-size: .82rem; font-weight: 600; }
+    .scroll-note { position: absolute; left: max(20px, calc((100vw - var(--max))/2)); bottom: 30px; display: flex; align-items: center; gap: 12px; color: #6f8297; font-size: .74rem; text-transform: uppercase; letter-spacing: .14em; }
+    .scroll-note::before { content: ""; height: 46px; width: 1px; background: linear-gradient(var(--accent), transparent); }
+    section { padding: 118px 0; position: relative; }
+    .section-head { display: grid; grid-template-columns: .9fr 1.1fr; gap: 60px; align-items: end; margin-bottom: 58px; }
+    .section-head h2 { font-size: clamp(2.2rem, 4.6vw, 4.5rem); line-height: 1.04; margin-top: 20px; }
+    .section-head p { margin: 0; color: var(--muted); max-width: 620px; justify-self: end; }
+    .intro { background: linear-gradient(180deg, transparent, rgba(9,20,38,.6), transparent); }
+    .pillars { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .pillar { padding: 30px 24px 32px; border-right: 1px solid var(--line); position: relative; overflow: hidden; }
+    .pillar:last-child { border-right: 0; }
+    .pillar::before { content: ""; position: absolute; left: 0; bottom: 0; width: 0; height: 2px; background: var(--accent); transition: width .35s; }
+    .pillar:hover::before { width: 100%; }
+    .pillar-index { display: block; color: var(--accent); font-family: Manrope; font-size: .72rem; letter-spacing: .13em; margin-bottom: 45px; }
+    .pillar h3 { font-size: 1.06rem; letter-spacing: -.02em; }
+    .solutions-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .solution-card { min-height: 285px; padding: 34px; border: 1px solid var(--line); border-radius: var(--radius); background: linear-gradient(145deg, rgba(13,27,49,.82), rgba(7,16,31,.58)); position: relative; overflow: hidden; transition: transform .3s, border-color .3s; display: flex; flex-direction: column; }
+    .solution-card:hover { transform: translateY(-5px); border-color: rgba(77,232,194,.3); }
+    .solution-card::after { content: ""; position: absolute; width: 190px; height: 190px; right: -100px; top: -100px; border: 1px solid rgba(77,232,194,.16); border-radius: 50%; transition: transform .45s; }
+    .solution-card:hover::after { transform: scale(1.2); }
+    .card-code { color: var(--accent); font-family: Manrope; font-size: .72rem; letter-spacing: .15em; }
+    .solution-card h3 { margin-top: 62px; font-size: clamp(1.4rem, 2.2vw, 2rem); }
+    .solution-card p { color: var(--muted); margin: 13px 0 0; max-width: 460px; }
+    .solution-project { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 9px; width: fit-content; margin-top: auto; padding-top: 24px; color: #8ee887; font-size: .78rem; font-weight: 600; letter-spacing: .02em; }
+    .solution-project--pending { color: #8ca4aa; }
+    .projects { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: stretch; }
+    .project-card { min-height: 510px; padding: 26px; border: 1px solid rgba(18,59,74,.14); border-radius: 26px; background: white; box-shadow: 0 16px 44px rgba(18,59,74,.06); display: flex; flex-direction: column; position: relative; overflow: hidden; transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease; }
+    .project-card:hover { transform: translateY(-6px); border-color: rgba(0,127,118,.38); box-shadow: 0 22px 54px rgba(18,59,74,.11); }
+    .project-card--active { color: white; border-color: rgba(85,200,77,.34); background: radial-gradient(circle at 90% 10%, rgba(85,200,77,.18), transparent 30%), linear-gradient(145deg, #123b4a, #082631); }
+    .project-card-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .project-number { color: var(--brand-teal); font: 700 .7rem/1 Manrope; letter-spacing: .15em; }
+    .project-card--active .project-number { color: #9ee596; }
+    .project-label { display: flex; align-items: center; gap: 12px; color: var(--accent); font-size: .75rem; text-transform: uppercase; letter-spacing: .13em; }
+    .project-label::before { content: ""; width: 8px; height: 8px; border: 1px solid currentColor; border-radius: 50%; box-shadow: 0 0 14px rgba(77,232,194,.7); }
+    .project-card:not(.project-card--active) .project-label { color: var(--brand-blue); }
+    .project-card:not(.project-card--active) .project-label::before { box-shadow: none; }
+    .project-visual { height: 148px; margin: 28px 0 30px; border-radius: 19px; display: grid; place-items: center; position: relative; overflow: hidden; background: var(--brand-light); border: 1px solid rgba(18,59,74,.08); }
+    .project-card--active .project-visual { background: rgba(255,255,255,.055); border-color: rgba(255,255,255,.12); }
+    .project-visual::before, .project-visual::after { content: ""; position: absolute; border: 1px solid rgba(0,127,118,.2); border-radius: 50%; }
+    .project-visual::before { width: 150px; height: 150px; right: -55px; top: -68px; }
+    .project-visual::after { width: 90px; height: 90px; left: -32px; bottom: -42px; }
+    .project-monogram { width: 66px; height: 66px; border-radius: 20px; display: grid; place-items: center; color: white; background: linear-gradient(145deg, var(--brand-blue), var(--brand-teal)); font: 800 1rem/1 Manrope; letter-spacing: .08em; box-shadow: 0 14px 30px rgba(20,108,148,.2); position: relative; z-index: 1; }
+    .project-card--active .project-monogram { color: #14352c; background: linear-gradient(145deg, #8de584, var(--brand-green)); box-shadow: 0 14px 30px rgba(85,200,77,.2); }
+    .project-card h3 { font-size: clamp(1.45rem, 2.2vw, 2.05rem); line-height: 1.1; letter-spacing: -.04em; }
+    .project-card p { color: #5d737a; margin: 15px 0 22px; font-size: .95rem; }
+    .project-card--active p { color: var(--muted); }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 26px; }
+    .project-tags span { padding: 5px 9px; border: 1px solid rgba(18,59,74,.13); border-radius: 999px; color: #60777e; font-size: .68rem; letter-spacing: .04em; }
+    .project-card--active .project-tags span { color: #d4e5e7; border-color: rgba(255,255,255,.15); }
+    .project-card .project-link { margin-top: auto; }
+    .project-link { color: var(--accent); display: inline-flex; gap: 12px; align-items: center; font-weight: 600; }
+    .process-track { display: grid; grid-template-columns: repeat(4, 1fr); position: relative; margin-top: 32px; }
+    .process-track::before { content: ""; position: absolute; top: 21px; left: 6%; right: 6%; height: 1px; background: linear-gradient(90deg, var(--accent-blue), var(--accent), var(--accent-violet)); }
+    .process-step { position: relative; padding-right: 30px; }
+    .step-dot { width: 43px; height: 43px; border: 1px solid rgba(255,255,255,.2); border-radius: 50%; background: var(--bg); display: grid; place-items: center; color: var(--accent); font-family: Manrope; font-size: .72rem; position: relative; z-index: 2; box-shadow: 0 0 25px rgba(77,232,194,.1); }
+    .process-step h3 { margin-top: 29px; font-size: 1.35rem; }
+    .process-step p { color: var(--muted); margin: 11px 0 0; font-size: .92rem; max-width: 230px; }
+    .lab-panel { border-radius: 32px; border: 1px solid rgba(139,124,255,.27); background: linear-gradient(120deg, rgba(20,22,54,.8), rgba(7,16,31,.88)); padding: clamp(36px, 7vw, 82px); display: grid; grid-template-columns: 1fr .8fr; gap: 60px; align-items: center; overflow: hidden; position: relative; }
+    .lab-panel::after { content: "LAB"; position: absolute; right: -24px; bottom: -94px; font: 800 clamp(8rem, 20vw, 18rem)/1 Manrope; color: rgba(139,124,255,.035); letter-spacing: -.08em; pointer-events: none; }
+    .lab-panel .eyebrow { color: #a99dff; }
+    .lab-panel h2 { font-size: clamp(2.5rem, 5vw, 5rem); line-height: .99; margin-top: 24px; }
+    .lab-panel p { color: var(--muted); max-width: 650px; margin: 24px 0 0; }
+    .lab-orbit { min-height: 290px; position: relative; display: grid; place-items: center; }
+    .lab-orbit i { position: absolute; border: 1px solid rgba(139,124,255,.26); border-radius: 50%; animation: spin 18s linear infinite; }
+    .lab-orbit i:nth-child(1) { width: 260px; height: 260px; }
+    .lab-orbit i:nth-child(2) { width: 180px; height: 180px; animation-direction: reverse; animation-duration: 12s; }
+    .lab-orbit i::after { content: ""; position: absolute; width: 9px; height: 9px; top: 18%; left: 9%; border-radius: 50%; background: var(--accent-violet); box-shadow: 0 0 18px var(--accent-violet); }
+    .lab-core { width: 84px; height: 84px; border-radius: 24px; display: grid; place-items: center; background: rgba(139,124,255,.1); border: 1px solid rgba(139,124,255,.5); color: #c2baff; font: 700 .76rem Manrope; letter-spacing: .14em; z-index: 2; }
+    .about-grid { display: grid; grid-template-columns: .78fr 1.22fr; gap: clamp(55px, 10vw, 140px); align-items: start; }
+    .about-statement { font: 500 clamp(1.65rem, 3vw, 2.65rem)/1.35 Manrope; letter-spacing: -.035em; margin: 0; }
+    .about-detail p { color: var(--muted); margin: 0 0 20px; }
+    .creator { margin-top: 38px; padding-top: 27px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+    .creator small { display: block; color: #6e8299; text-transform: uppercase; letter-spacing: .12em; font-size: .7rem; }
+    .creator a { color: var(--accent); font-weight: 600; }
+    .contact { background: linear-gradient(180deg, transparent, rgba(9,20,38,.72)); }
+    .contact-wrap { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(50px, 9vw, 120px); }
+    .contact-copy h2 { font-size: clamp(2.8rem, 5.5vw, 5.2rem); line-height: 1.02; margin-top: 24px; }
+    .contact-copy p { color: var(--muted); max-width: 460px; margin-top: 23px; }
+    .contact-email { display: inline-flex; align-items: center; gap: 10px; margin-top: 24px; color: var(--accent); font-weight: 600; border-bottom: 1px solid rgba(85,200,77,.35); padding-bottom: 5px; transition: color .2s, border-color .2s; }
+    .contact-email:hover { color: #8ee887; border-color: currentColor; }
+    .contact-form { padding: clamp(26px, 4vw, 46px); border: 1px solid var(--line); border-radius: 26px; background: rgba(9,21,40,.7); }
+    .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .field { margin-bottom: 20px; }
+    .field label { display: block; color: #b6c4d3; font-size: .84rem; margin-bottom: 8px; }
+    .field input, .field textarea { width: 100%; color: white; background: rgba(3,10,22,.58); border: 1px solid var(--line); border-radius: 12px; padding: 14px 15px; outline: none; transition: border-color .2s, box-shadow .2s; }
+    .field textarea { min-height: 130px; resize: vertical; }
+    .field input:focus, .field textarea:focus { border-color: rgba(77,232,194,.5); box-shadow: 0 0 0 3px rgba(77,232,194,.08); }
+    .form-foot { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+    .form-message { color: var(--accent); font-size: .9rem; min-height: 24px; }
+    footer { padding: 45px 0 30px; border-top: 1px solid var(--line); background: rgba(3,8,17,.65); }
+    .footer-main { display: flex; justify-content: space-between; align-items: center; gap: 30px; padding-bottom: 36px; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 24px; color: var(--muted); font-size: .87rem; }
+    .footer-links a:hover { color: var(--text); }
+    .footer-base { border-top: 1px solid var(--line); padding-top: 24px; display: flex; justify-content: space-between; gap: 20px; color: #6f8297; font-size: .78rem; }
+
+    /* Identidad Vieterre: innovación, tecnología y propósito público */
+    .hero::before { border-color: rgba(85,200,77,.14); box-shadow: 0 0 120px rgba(0,127,118,.11), inset 0 0 120px rgba(20,108,148,.05); }
+    .system-card::before { background: rgba(0,127,118,.2); }
+    .system-panel { background: linear-gradient(145deg, rgba(18,59,74,.96), rgba(7,30,41,.9)); border-color: rgba(230,245,243,.2); }
+    .signal-map { background: radial-gradient(circle at 50% 50%, rgba(85,200,77,.1), transparent 45%), rgba(5,28,37,.54); }
+    .btn-primary { color: #0b2d25; }
+    .intro { background: var(--brand-light); color: var(--brand-deep); }
+    .intro .eyebrow { color: var(--brand-teal); }
+    .intro .section-head p { color: #45636c; }
+    .intro .pillars { border-color: rgba(18,59,74,.16); }
+    .intro .pillar { border-color: rgba(18,59,74,.16); }
+    .intro .pillar-index { color: var(--brand-teal); }
+    .intro .pillar::before { background: var(--brand-green); }
+    .solution-card { background: linear-gradient(145deg, rgba(18,59,74,.82), rgba(7,30,41,.7)); }
+    .solution-card::after { border-color: rgba(85,200,77,.2); }
+    .solution-card:hover { border-color: rgba(85,200,77,.38); }
+    .projects { background: #f7fbfa; color: var(--brand-deep); border-color: rgba(18,59,74,.12); }
+    .projects .eyebrow { color: var(--brand-teal); }
+    .projects .section-head p { color: #516a72; }
+    .project-card--active .project-label, .project-card--active .project-link { color: #7dde72; }
+    .project-card--active .project-label::before { box-shadow: 0 0 14px rgba(85,200,77,.7); }
+    .process-track::before { background: linear-gradient(90deg, var(--brand-blue), var(--brand-teal), var(--brand-green)); }
+    .lab-panel { border-color: rgba(85,200,77,.3); background: linear-gradient(120deg, rgba(18,59,74,.98), rgba(0,82,84,.82)); }
+    .lab-panel::after { color: rgba(85,200,77,.05); }
+    .lab-panel .eyebrow { color: #7dde72; }
+    .lab-orbit i { border-color: rgba(85,200,77,.3); }
+    .lab-orbit i::after { background: var(--brand-green); box-shadow: 0 0 18px var(--brand-green); }
+    .lab-core { background: rgba(85,200,77,.11); border-color: rgba(85,200,77,.58); color: #bff0ba; }
+    .contact { background: linear-gradient(180deg, transparent, rgba(0,127,118,.13)); }
+    .contact-form { background: rgba(18,59,74,.68); }
+    footer { background: #051a23; }
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .75s ease, transform .75s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    @keyframes pulse { 0%,100% { opacity: .45; transform: scale(.8); } 50% { opacity: 1; transform: scale(1.15); } }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes orbit { to { transform: rotate(360deg); } }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+    @media (max-width: 920px) {
+      .menu-btn { display: block; }
+      .nav-links { display: none; position: absolute; left: 20px; right: 20px; top: 72px; background: rgba(7,16,31,.97); border: 1px solid var(--line); border-radius: 18px; padding: 22px; flex-direction: column; align-items: stretch; gap: 0; box-shadow: var(--shadow); }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 11px 6px; }
+      .nav-cta { text-align: center; margin-top: 8px; }
+      .hero { min-height: auto; padding-bottom: 120px; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-copy { max-width: 760px; }
+      .system-card { min-height: 430px; }
+      .system-panel { transform: none; }
+      .section-head { grid-template-columns: 1fr; gap: 25px; align-items: start; }
+      .section-head p { justify-self: start; }
+      .pillars { grid-template-columns: repeat(2,1fr); }
+      .pillar:nth-child(2) { border-right: 0; }
+      .pillar:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .projects-grid { grid-template-columns: 1fr 1fr; }
+      .project-card--active { grid-column: 1 / -1; min-height: 460px; }
+      .lab-panel, .about-grid, .contact-wrap { grid-template-columns: 1fr; }
+      .lab-orbit { min-height: 250px; }
+    }
+    @media (max-width: 650px) {
+      .shell { width: min(calc(100% - 28px), var(--max)); }
+      .nav { min-height: 70px; }
+      .nav-links { left: 14px; right: 14px; top: 64px; }
+      .hero { padding-top: 125px; }
+      .hero::before { width: 360px; height: 360px; right: -220px; top: 90px; }
+      h1 { font-size: clamp(2.9rem, 15vw, 4.6rem); }
+      h1 .outline { font-size: .64em; line-height: 1.12; }
+      .system-card { min-height: 370px; }
+      .system-panel { padding: 15px; }
+      .signal-map { height: 260px; }
+      .panel-foot { grid-template-columns: 1fr 1fr; }
+      .metric:last-child { display: none; }
+      section { padding: 86px 0; }
+      .section-head { margin-bottom: 40px; }
+      .pillars, .solutions-grid, .projects-grid { grid-template-columns: 1fr; }
+      .pillar { border-right: 0; border-bottom: 1px solid var(--line); }
+      .pillar:last-child { border-bottom: 0; }
+      .pillar:nth-child(3) { border-bottom: 1px solid var(--line); }
+      .pillar-index { margin-bottom: 24px; }
+      .solution-card { min-height: 245px; padding: 27px; }
+      .solution-card h3 { margin-top: 42px; }
+      .project-card, .project-card--active { grid-column: auto; min-height: 480px; }
+      .process-track { grid-template-columns: 1fr; gap: 30px; }
+      .process-track::before { top: 0; bottom: 0; left: 21px; right: auto; width: 1px; height: auto; }
+      .process-step { padding: 0 0 0 70px; min-height: 110px; }
+      .step-dot { position: absolute; left: 0; top: 0; }
+      .process-step h3 { margin-top: 0; }
+      .lab-panel { padding: 34px 25px; }
+      .lab-orbit { transform: scale(.8); margin-inline: -20px; }
+      .creator { align-items: flex-start; flex-direction: column; }
+      .field-grid { grid-template-columns: 1fr; gap: 0; }
+      .contact-form { padding: 24px 18px; }
+      .footer-main, .footer-base { align-items: flex-start; flex-direction: column; }
+      .scroll-note { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Ir al contenido</a>
+  <header class="site-header" id="header">
+    <div class="shell nav">
+      <a href="#inicio" class="brand" aria-label="Vieterre.tech, inicio">
+        <span class="brand-mark" aria-hidden="true"><span class="brand-monogram" aria-hidden="true">V</span></span>
+        <span>Vieterre<em>.tech</em></span>
+      </a>
+      <button class="menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
+      <nav class="nav-links" id="nav-links" aria-label="Navegación principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#soluciones">Soluciones</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#sobre">Sobre Vieterre</a>
+        <a href="#contacto">Contacto</a>
+        <a href="#soluciones" class="nav-cta">Soluciones para entidades</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="inicio">
+      <div class="shell hero-grid">
+        <div class="hero-copy reveal">
+          <span class="eyebrow">Tecnología con propósito público</span>
+          <h1>Vieterre<em style="color:var(--accent);font-style:normal">.tech</em><span class="outline">Innovación, tecnología y conocimiento para transformar la <strong>gestión pública.</strong></span></h1>
+          <p>Impulsamos la transformación de las entidades públicas mediante el diseño de soluciones digitales, la asesoría especializada y la formación de capacidades, con el fin de simplificar procesos, fortalecer la toma de decisiones y generar mayor valor público para la ciudadanía.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#soluciones">Explorar soluciones <span class="arrow">→</span></a>
+            <a class="btn btn-secondary" href="#sobre">Conocer Vieterre</a>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-note">Explorar</div>
+    </section>
+
+    <section class="intro" id="que-es">
+      <div class="shell">
+        <div class="section-head reveal"><div><span class="eyebrow">Qué es Vieterre</span><h2>Tecnología y conocimiento para transformar lo público.</h2></div><p>Trabajamos en tres frentes complementarios: soluciones digitales, asesoría especializada y formación de capacidades para responder a retos reales de las entidades y sus equipos.</p></div>
+        <div class="pillars reveal">
+          <article class="pillar"><span class="pillar-index">01 / INTELIGENCIA</span><h3>IA aplicada</h3></article>
+          <article class="pillar"><span class="pillar-index">02 / FLUJOS</span><h3>Automatización</h3></article>
+          <article class="pillar"><span class="pillar-index">03 / EVIDENCIA</span><h3>Analítica de datos</h3></article>
+          <article class="pillar"><span class="pillar-index">04 / DECISIONES</span><h3>Gestión inteligente</h3></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="soluciones">
+      <div class="shell">
+        <div class="section-head reveal"><div><span class="eyebrow">Soluciones para el sector público</span><h2>Capacidad institucional que se transforma.</h2></div><p>Diseñamos herramientas claras y escalables, acompañadas de asesoría y transferencia de conocimiento, para modernizar la operación, mejorar el control y convertir información pública en decisiones oportunas.</p></div>
+        <div class="solutions-grid">
+          <article class="solution-card reveal"><span class="card-code">SOL / 01</span><h3>Asistentes inteligentes</h3><p>IA aplicada para orientar a servidores públicos en procesos metodológicos, técnicos y operativos con contexto institucional.</p><a class="solution-project" href="#proyectos">Asistente Metodológico <span class="arrow">→</span></a></article>
+          <article class="solution-card reveal"><span class="card-code">SOL / 02</span><h3>Automatización de procesos</h3><p>Flujos digitales que reducen cargas manuales, conectan dependencias y fortalecen la trazabilidad de la gestión.</p><span class="solution-project solution-project--pending">Próximos proyectos</span></article>
+          <article class="solution-card reveal"><span class="card-code">SOL / 03</span><h3>Analítica y datos</h3><p>Tableros y modelos que convierten datos institucionales en evidencia para el seguimiento y la toma de decisiones.</p><a class="solution-project" href="#proyectos">Auditoría Inteligente <span class="arrow">→</span></a></article>
+          <article class="solution-card reveal"><span class="card-code">SOL / 04</span><h3>Herramientas de gestión</h3><p>Instrumentos digitales para fortalecer proyectos, procedimientos, auditoría, control y desempeño institucional.</p><a class="solution-project" href="#proyectos">Gestión de Proyectos <span class="arrow">→</span></a></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="projects" id="proyectos">
+      <div class="shell">
+        <div class="section-head reveal"><div><span class="eyebrow">Proyectos para la gestión pública</span><h2>Soluciones en movimiento.</h2></div><p>Productos digitales que responden a necesidades institucionales concretas y evolucionan con la experiencia de sus usuarios.</p></div>
+        <div class="projects-grid reveal">
+          <article class="project-card project-card--active">
+            <div class="project-card-head"><span class="project-number">PRO / 01</span><span class="project-label">Disponible</span></div>
+            <div class="project-visual" aria-hidden="true"><span class="project-monogram">AM</span></div>
+            <h3>Asistente Metodológico para Procedimientos</h3>
+            <p>Guía a los equipos de las entidades en la estructuración, revisión y mejora de procedimientos con claridad, consistencia y trazabilidad.</p>
+            <div class="project-tags"><span>SOL / 01 · Asistentes inteligentes</span><span>Procedimientos</span></div>
+            <a class="project-link" href="https://civicflow-assistants1.vieterre.tech" target="_blank" rel="noreferrer">Abrir aplicación <span class="arrow">↗</span></a>
+          </article>
+          <article class="project-card">
+            <div class="project-card-head"><span class="project-number">PRO / 02</span><span class="project-label">En desarrollo</span></div>
+            <div class="project-visual" aria-hidden="true"><span class="project-monogram">AI</span></div>
+            <h3>Auditoría Inteligente</h3>
+            <p>Organiza evidencias, hallazgos y planes de mejoramiento para facilitar auditorías públicas más ágiles, trazables y orientadas al riesgo.</p>
+            <div class="project-tags"><span>SOL / 03 · Analítica y datos</span><span>Auditoría</span></div>
+            <a class="project-link" href="#contacto">Consultar proyecto <span class="arrow">→</span></a>
+          </article>
+          <article class="project-card">
+            <div class="project-card-head"><span class="project-number">PRO / 03</span><span class="project-label">En desarrollo</span></div>
+            <div class="project-visual" aria-hidden="true"><span class="project-monogram">GP</span></div>
+            <h3>Gestión de Proyectos</h3>
+            <p>Conecta planes institucionales, actividades, responsables e indicadores para convertir la planeación pública en seguimiento accionable.</p>
+            <div class="project-tags"><span>SOL / 04 · Herramientas de gestión</span><span>Planeación</span></div>
+            <a class="project-link" href="#contacto">Consultar proyecto <span class="arrow">→</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="metodo">
+      <div class="shell">
+        <div class="section-head reveal"><div><span class="eyebrow">Cómo acompañamos a las entidades</span><h2>Del reto público a la capacidad instalada.</h2></div><p>Un proceso colaborativo que combina análisis, diseño, implementación y formación para dejar soluciones útiles y equipos fortalecidos.</p></div>
+        <div class="process-track reveal">
+          <article class="process-step"><span class="step-dot">01</span><h3>Comprender</h3><p>Analizamos el reto, la normativa, los actores y el contexto institucional.</p></article>
+          <article class="process-step"><span class="step-dot">02</span><h3>Diseñar</h3><p>Construimos con los equipos una solución clara, pertinente y adoptable.</p></article>
+          <article class="process-step"><span class="step-dot">03</span><h3>Implementar</h3><p>Integramos tecnología, datos y procesos con trazabilidad y acompañamiento.</p></article>
+          <article class="process-step"><span class="step-dot">04</span><h3>Fortalecer</h3><p>Formamos capacidades, medimos resultados y promovemos la mejora continua.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="lab">
+      <div class="shell">
+        <div class="lab-panel reveal">
+          <div><span class="eyebrow">Vieterre Lab</span><h2>Innovación pública en práctica.</h2><p>Un espacio para explorar nuevas interfaces, modelos inteligentes y usos responsables de la tecnología frente a desafíos del Estado y los territorios.</p></div>
+          <div class="lab-orbit" aria-hidden="true"><i></i><i></i><span class="lab-core">LAB / 01</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre">
+      <div class="shell about-grid">
+        <div class="reveal"><span class="eyebrow">Sobre Vieterre</span><p class="about-statement">Tecnología con propósito para instituciones más ágiles, transparentes y cercanas.</p></div>
+        <div class="about-detail reveal"><p>Vieterre.tech es un laboratorio independiente de innovación aplicada al sector público. Diseñamos soluciones digitales, brindamos asesoría especializada y desarrollamos procesos de formación para fortalecer la gestión institucional.</p><p>Nuestro enfoque combina comprensión de lo público, pensamiento sistémico, diseño funcional y desarrollo ágil para crear soluciones útiles, responsables y capacidades que permanecen en los equipos.</p></div>
+      </div>
+    </section>
+
+    <section class="contact" id="contacto">
+      <div class="shell contact-wrap">
+        <div class="contact-copy reveal"><span class="eyebrow">Contacto institucional</span><h2>Transformemos un reto público.</h2><p>Cuéntanos qué proceso, servicio o necesidad de tu entidad requiere una solución digital, asesoría especializada o formación.</p><a class="contact-email" href="mailto:soluciones@vieterre.tech">soluciones@vieterre.tech <span class="arrow">↗</span></a></div>
+        <form class="contact-form reveal" id="contact-form">
+          <div class="field-grid"><div class="field"><label for="name">Nombre y entidad</label><input id="name" name="name" autocomplete="name" required placeholder="Tu nombre · Entidad"></div><div class="field"><label for="email">Correo institucional</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="nombre@entidad.gov.co"></div></div>
+          <div class="field"><label for="message">¿Qué reto desean resolver?</label><textarea id="message" name="message" required placeholder="Cuéntanos si requieren una solución digital, asesoría o formación"></textarea></div>
+          <div class="form-foot"><button class="btn btn-primary" type="submit">Enviar mensaje <span class="arrow">→</span></button><span class="form-message" id="form-message" role="status" aria-live="polite"></span></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell"><div class="footer-main"><a href="#inicio" class="brand"><span class="brand-mark" aria-hidden="true"><span class="brand-monogram" aria-hidden="true">V</span></span><span>Vieterre<em>.tech</em></span></a><nav class="footer-links" aria-label="Navegación secundaria"><a href="#soluciones">Soluciones</a><a href="#proyectos">Proyectos</a><a href="#sobre">Sobre Vieterre</a><a href="#contacto">Contacto</a></nav></div><div class="footer-base"><span>© <span id="year"></span> Vieterre.tech</span><span>Innovación y tecnología para la gestión pública.</span></div></div>
+  </footer>
+
+  <script>
+    const header = document.querySelector('#header');
+    const menuButton = document.querySelector('.menu-btn');
+    const navLinks = document.querySelector('#nav-links');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const updateHeader = () => header.classList.toggle('scrolled', window.scrollY > 24);
+    updateHeader();
+    window.addEventListener('scroll', updateHeader, { passive: true });
+    menuButton.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(open));
+      menuButton.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuButton.setAttribute('aria-expanded', 'false');
+      menuButton.setAttribute('aria-label', 'Abrir menú');
+    }));
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') { navLinks.classList.remove('open'); menuButton.setAttribute('aria-expanded', 'false'); }
+    });
+    if (!reducedMotion) {
+      const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+      }), { threshold: .12 });
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+      window.addEventListener('pointermove', event => {
+        document.body.style.setProperty('--mx', `${event.clientX}px`);
+        document.body.style.setProperty('--my', `${event.clientY}px`);
+      }, { passive: true });
+    } else document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+    document.querySelector('#contact-form').addEventListener('submit', event => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      const message = document.querySelector('#form-message');
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+      message.textContent = 'Gracias. Tu mensaje quedó listo para enviar.';
+      form.reset();
+    });
+    document.querySelector('#year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
