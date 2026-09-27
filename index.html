@@ -155,7 +155,7 @@
     .solution-project { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 9px; width: fit-content; margin-top: auto; padding-top: 24px; color: #8ee887; font-size: .78rem; font-weight: 600; letter-spacing: .02em; }
     .solution-project--pending { color: #8ca4aa; }
     .projects { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-    .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: stretch; }
+    .projects-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; align-items: stretch; }
     .project-card { min-height: 510px; padding: 26px; border: 1px solid rgba(18,59,74,.14); border-radius: 26px; background: white; box-shadow: 0 16px 44px rgba(18,59,74,.06); display: flex; flex-direction: column; position: relative; overflow: hidden; transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease; }
     .project-card:hover { transform: translateY(-6px); border-color: rgba(0,127,118,.38); box-shadow: 0 22px 54px rgba(18,59,74,.11); }
     .project-card--active { color: white; border-color: rgba(85,200,77,.34); background: radial-gradient(circle at 90% 10%, rgba(85,200,77,.18), transparent 30%), linear-gradient(145deg, #123b4a, #082631); }
@@ -283,7 +283,7 @@
       .pillar:nth-child(2) { border-right: 0; }
       .pillar:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
       .projects-grid { grid-template-columns: 1fr 1fr; }
-      .project-card--active { grid-column: 1 / -1; min-height: 460px; }
+      .project-card--active { grid-column: auto; min-height: 510px; }
       .lab-panel, .about-grid, .contact-wrap { grid-template-columns: 1fr; }
       .lab-orbit { min-height: 250px; }
     }
@@ -412,6 +412,14 @@
             <p>Conecta planes institucionales, actividades, responsables e indicadores para convertir la planeación pública en seguimiento accionable.</p>
             <div class="project-tags"><span>SOL / 04 · Herramientas de gestión</span><span>Planeación</span></div>
             <a class="project-link" href="#contacto">Consultar proyecto <span class="arrow">→</span></a>
+          </article>
+          <article class="project-card">
+            <div class="project-card-head"><span class="project-number">PRO / 04</span><span class="project-label">Disponible</span></div>
+            <div class="project-visual" aria-hidden="true"><span class="project-monogram">FO</span></div>
+            <h3>Formación</h3>
+            <p>Fortalece las capacidades de los equipos públicos con programas prácticos para aplicar conocimientos y mejorar la gestión institucional.</p>
+            <div class="project-tags"><span>Formación institucional</span><span>Desarrollo de capacidades</span></div>
+            <a class="project-link" href="#contacto">Consultar formación <span class="arrow">→</span></a>
           </article>
         </div>
       </div>
